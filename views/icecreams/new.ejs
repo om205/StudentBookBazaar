@@ -1,0 +1,90 @@
+<% layout('layouts/boilerplate')%>
+    <div class="row">
+       
+        <div class="col-6 offset-3">   
+                    <h1 class="text-center text-light">New Store</h1>      
+                 <form action="/icecreams" method="POST" novalidate class="validateit" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label text-light" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="icecream[title]" required>
+                    <div class="valid-feedback">
+                        Filled!!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-light" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="icecream[location]" required>
+                    <div class="valid-feedback">
+                        Filled!!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="file" class="form-label text-light">Upload Image(s)</label>
+                    <input class="form-control" type="file" id="image" name="image" multiple>
+                 </div>
+
+                <!--<div class="mb-3">
+                    <label class="form-label" for="image">Image Url</label>
+                    <input class="form-control" type="text" id="image" name="icecream[image]" required>
+                    <div class="valid-feedback">
+                        Filled!!
+                    </div>
+                </div>-->
+                <div class="mb-3">
+                    <label class="form-label text-light" for="price">Minimum Price From Availabe Icecreams</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">Rs</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                            aria-describedby="price-label" name="icecream[pricel]" required>
+                        <div class="valid-feedback">
+                            Filled!!
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light" for="price">Maximum Price From Availabe Icecreams</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">Rs</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                            aria-describedby="price-label" name="icecream[priceh]" required>
+                        <div class="valid-feedback">
+                            Filled!!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-light" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="icecream[description]" required></textarea>
+                    <div class="valid-feedback">
+                        Filled!!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add Store</button>
+                </div>
+            </form>
+            <a class="btn btn-danger" href="/icecreams">All Stores</a>
+        
+</div>
+ 
+    </div>
+
+    <script>
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.validateit')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
